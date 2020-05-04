@@ -11,6 +11,7 @@ GPIO.setmode(GPIO.BOARD)
 
 #define the pin that goes to the circuit
 pin_to_circuit = 7
+max_count = 100000
 
 def rc_time (pin_to_circuit):
     count = 0
@@ -26,6 +27,8 @@ def rc_time (pin_to_circuit):
     #Count until the pin goes high
     while (GPIO.input(pin_to_circuit) == GPIO.LOW):
         count += 1
+        if count == max_count:
+            break
 
     return count
 
